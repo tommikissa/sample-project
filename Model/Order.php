@@ -8,17 +8,12 @@ use Model\Payment;
 class Order
 {
     private $dataInterface;
-    private $payment;
+    private $paymentFactory;
 
     public function __construct(DataInterface $dataInterface, PaymentFactory $paymentFactory)
     {
         $this->dataInterface = $dataInterface;
-    }
-
-    public function setPayment(\PaymentFactory $paymentFactory)
-    {
-        $this->payment = $paymentFactory->createPayment();
-        return $this;
+        $this->paymentFactory = $paymentFactory;
     }
 
     public function makePayment()
